@@ -27,7 +27,9 @@ spec:
         app: myapp
     spec:
       containers:
-        - name: node-app
-          image: mizchi/node-server
+        - name: node-simple-server
+          image: mizchi/node-server:v1
+          # image: localhost:5000/fooimg:v1
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000

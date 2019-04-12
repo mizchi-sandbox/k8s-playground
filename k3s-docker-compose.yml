@@ -1,5 +1,10 @@
 version: "3"
 services:
+  dockerhub:
+    image: registry:2
+    restart: always
+    ports:
+      - "5000:5000"
   k3s_master:
     image: rancher/k3s:v0.2.0-amd64
     command:
@@ -25,6 +30,8 @@ services:
     privileged: true
     command:
       - agent
+      # - --server
+      # - https://dockerhub:5000
     environment:
       TZ: Asia/Tokyo
       K3S_URL: https://k3s_master:6443
